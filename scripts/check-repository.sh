@@ -22,6 +22,7 @@ required_directories=(
 
 required_files=(
   README.md
+  README.en.md
   AGENTS.md
   .gitignore
   docs/brand-architecture.md
@@ -46,6 +47,7 @@ required_files=(
   tasks/03-developer-docs.md
   tasks/04-dns-migration-plan.md
   tasks/05-github-organization-plan.md
+  tasks/06-readme-localization.md
   .github/profile/README.md
   .github/CONTRIBUTING.md
   .github/CODE_OF_CONDUCT.md
