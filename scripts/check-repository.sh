@@ -7,12 +7,14 @@ cd "$repo_root"
 
 required_directories=(
   docs
+  docs/decisions
   website
   documentation
   infrastructure/cloudflare
   infrastructure/github
   infrastructure/google-workspace
   infrastructure/monitoring
+  infrastructure/domains
   scripts
   tasks
   .github/workflows
@@ -27,7 +29,10 @@ required_files=(
   docs/domain-matrix.md
   docs/deployment-runbook.md
   docs/open-questions.md
+  docs/decisions/0001-domain-portfolio-priorities.md
+  infrastructure/domains/domain-register.csv
   tasks/00-inventory.md
+  tasks/01-domain-matrix.md
   tasks/TEMPLATE.md
 )
 
@@ -73,9 +78,17 @@ for pattern in "${secret_patterns[@]}"; do
   fi
 done
 
-if rg --hidden --glob '!.git/**' --glob '*.md' --glob '*.sh' --glob '.gitignore' \
+if rg --hidden --glob '!.git/**' --glob '*.md' --glob '*.sh' --glob '*.csv' --glob '.gitignore' \
   -n -- '[[:blank:]]+$' .; then
   report_failure "trailing whitespace detected"
+fi
+
+domain_register='infrastructure/domains/domain-register.csv'
+if [[ -s "$domain_register" ]]; then
+  if ! awk -F',' 'NF != 12 { print FNR ": expected 12 CSV fields"; invalid = 1 } END { exit invalid }' \
+    "$domain_register"; then
+    report_failure "invalid domain register CSV structure"
+  fi
 fi
 
 for document in README.md AGENTS.md docs/*.md tasks/*.md; do

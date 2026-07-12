@@ -1,161 +1,214 @@
 # Zeno 域名矩阵
 
-状态：`proposed`
+- 阶段：Phase 1 — 域名组合规划
+- 状态：`proposed`
+- 基准日期：2026-07-12
+- 主域名：`zeno-ai.org`
+- 候选可注册性：全部 `TBD`，本阶段未查询
+- 生产操作：未购买、未续费、未修改 DNS 或 nameserver
+- 预算币种：USD
 
-主域名：`zeno-ai.org`（由项目方确认已持有）
+## 1. 决策边界
 
-DNS、注册商锁、证书和托管现状：本阶段未连接生产账户，均待授权核验
+本文建立域名优先级、购买建议、预算上限和持有策略，不构成购买授权。域名购买、续费、nameserver、MX 和 DNS 变更属于受保护操作，必须另行取得明确人工批准。
 
-## 1. 使用原则
+“建议购买”只表示品牌组合建议，且同时受以下条件约束：
 
-- 主域名承载品牌信任；新增子域必须有明确用途、Owner、生命周期、监控和退役方案。
-- 官网使用根域作为 canonical，`www` 只做永久重定向，避免两套内容。
-- 技术文档按产品路径组织，默认不为每条产品线创建独立子域。
-- 环境名必须显式；预览环境不得被搜索引擎索引，也不得使用生产数据。
-- 不在 DNS 名称中暴露内部拓扑、人员姓名、敏感项目或临时凭据。
-- 所有记录采用声明式变更、双人评审和可验证回滚；禁止在本规划阶段实施。
+1. 经批准后由指定执行人查询实时可注册性或合法转让状态；
+2. Brand/Legal 完成名称冲突、商标和地区风险检查；
+3. 注册与续费价格均在本文门禁内，且不存在未评审的 premium 续费；
+4. 注册商、Owner、MFA、恢复、自动续费和付款责任已确认；
+5. 跳转目标、TLS、监控和退役方案已批准。
 
-## 2. 状态定义
+本阶段没有查询候选域名是否可注册，也不根据网页搜索、WHOIS/RDAP 或注册商搜索结果推断归属。
 
-| 状态 | 含义 |
-| --- | --- |
-| `proposed` | 规划建议，未批准、未创建或未核验 |
-| `approved` | 已批准建设，仍不代表 DNS 已生效 |
-| `active` | 已核验解析、TLS、内容、Owner 和监控 |
-| `deprecated` | 已公告迁移，不接受新的依赖 |
-| `retired` | 已下线且完成重定向、防接管和记录清理 |
+## 2. 四级优先级
 
-只有在生产账户中完成验证并留下变更记录后，才能把条目改为 `active`。
-
-## 3. 公共域名矩阵
-
-| FQDN | 用途 | 内容/路由 | 受众 | 优先级 | 状态 | 建议 Owner |
-| --- | --- | --- | --- | --- | --- | --- |
-| `zeno-ai.org` | 品牌官网主入口 | 官网首页，作为 canonical | 全部 | P0 | `proposed` | Website Owner |
-| `www.zeno-ai.org` | 兼容常见访问习惯 | 308 重定向至根域并保留路径 | 全部 | P0 | `proposed` | Website Owner |
-| `docs.zeno-ai.org` | 版本化产品文档 | 文档站；产品使用路径分区 | 教师、学生、研究者、开发者 | P0 | `proposed` | Documentation Owner |
-| `status.zeno-ai.org` | 服务状态与维护通知 | 独立状态页，避免与主站同故障域 | 用户、维护者 | P1 | `proposed` | Reliability Owner |
-| `cloud.zeno-ai.org` | Zeno Cloud 用户入口 | 仅在产品具备身份和支持基线后启用 | Cloud 用户 | P1 | `proposed` | Cloud Product Owner |
-| `learn.zeno-ai.org` | 结构化教学内容 | 课程与实验路径；先评估是否并入文档站 | 教师、学生 | P2 | `proposed` | Education Content Owner |
-| `assets.zeno-ai.org` | 公共静态资源 | 仅当跨站 CDN 有明确收益时启用 | 网站和文档站 | P2 | `proposed` | Digital Infrastructure Owner |
-
-P0 表示首次公开发布所需，P1 为相邻能力，P2 必须先证明独立子域的必要性。不得仅为营销活动临时增加长期子域。
-
-## 4. 产品 URL 策略
-
-官网产品页面建议使用路径而非产品子域：
-
-| 产品 | 官网路径 | 文档路径 | 独立子域 |
+| 优先级 | 定义 | 默认策略 | 持有要求 |
 | --- | --- | --- | --- |
-| Zeno Core | `/products/core/` | `/core/` | 不建议 |
-| Zeno Link | `/products/link/` | `/link/` | 不建议 |
-| Zeno Brain | `/products/brain/` | `/brain/` | 不建议 |
-| Zeno Cerebellum | `/products/cerebellum/` | `/cerebellum/` | 不建议 |
-| Zeno Humanoid | `/products/humanoid/` | `/humanoid/` | 不建议 |
-| Zeno Marine | `/products/marine/` | `/marine/` | 不建议 |
-| Zeno Cloud | `/products/cloud/` | `/cloud/` | 应用入口可用 `cloud.zeno-ai.org` |
-| Zeno Simulation | `/products/simulation/` | `/simulation/` | 不建议 |
+| P0 | 现有生产主域名 | 无条件保护，不改变 canonical | 长期持有；不得因项目调整而短期放弃 |
+| P1 | 必须优先保护的主品牌近似域名 | 获得可注册性、价格与法务确认后优先申请购买批准 | 建议至少连续持有 3 年 |
+| P2 | 产品与开发者入口 | 只有入口 Owner、内容和跳转目标明确后才申请购买 | 每年按使用价值复核，活跃期间持续持有 |
+| P3 | 可选营销和防御性域名 | 默认不购买；由发布计划或真实混淆证据触发 | 有明确用途才持有，退役须评估防接管风险 |
 
-文档版本建议采用 `/core/v1/` 或由文档框架提供版本切换；canonical 始终指向明确版本或维护中的稳定版本。路径最终形式需在文档技术栈选定后批准。
+P0/P1 的价值主要是身份保护；P2/P3 不应替代 `zeno-ai.org` 的 canonical 品牌地位。
 
-## 5. 非生产与预览域名
+## 3. 评估口径
 
-| FQDN 模式 | 用途 | 访问要求 | 数据要求 | 状态 |
-| --- | --- | --- | --- | --- |
-| `preview.zeno-ai.org` | 官网共享预览入口 | SSO 或访问策略；禁止索引 | 合成/公开数据 | `proposed` |
-| `docs-preview.zeno-ai.org` | 文档共享预览入口 | SSO 或访问策略；禁止索引 | 仅未发布文档 | `proposed` |
-| 每个 PR 的托管商临时 URL | 短期审阅 | 随 PR 关闭；不得绑定生产 Cookie | 合成/公开数据 | `proposed` |
+### 品牌价值
 
-不建议创建 `dev.zeno-ai.org`、`test.zeno-ai.org` 等无人负责的常驻环境。若确有需要，应补充 Owner、成本、访问控制、数据分类、自动过期和监控。
+- **高**：直接代表 Zeno 主品牌、核心定位或关键入口，短而易记。
+- **中**：清楚描述单一产品或使用场景，但会分散主域权威。
+- **低**：价值依赖短期活动或尚未批准的市场假设。
 
-## 6. 邮件与 Workspace 地址规划
+### 混淆风险
 
-Google Workspace 已开通是项目方提供的已知资产；本阶段没有登录验证 MX、域名验证、群组或安全设置。
+- **高**：第三方使用后容易被误认为 Zeno 官方入口，可能用于钓鱼、流量截获或品牌稀释。
+- **中**：与具体产品或技术定位相似，但用户仍可能通过主域辨别。
+- **低**：与主品牌关联弱或用户接触面有限。
 
-| 地址/功能 | 类型 | 用途 | 状态 | 建议治理 |
-| --- | --- | --- | --- | --- |
-| 根域 MX | DNS/Workspace | 组织邮件接收 | `proposed`（待核验） | 不在网站发布前盲目修改 |
-| `security@zeno-ai.org` | Google Group | 安全报告入口 | `proposed` | 限制成员可见，至少两名接收者 |
-| `support@zeno-ai.org` | Group/工单入口 | 产品支持分流 | `proposed` | 明确响应范围与自动回复 |
-| `community@zeno-ai.org` | Google Group | 开源社区联系 | `proposed` | 防垃圾邮件与公开归档策略 |
-| `press@zeno-ai.org` | Google Group | 媒体和品牌联系 | `proposed` | Brand Owner 负责 |
-| `legal@zeno-ai.org` | Google Group | 法律与合规联系 | `proposed` | 受限成员与留存策略 |
+风险是命名层面的初评，不代表候选已被注册、出售或发生侵权。
 
-公开角色地址优先使用群组或工单系统，不依赖单个员工邮箱。离职或角色变更时只调整成员，不更改公共地址。
+### 预算口径
 
-## 7. DNS 记录设计基线
+- “年度预算上限”是单域每年续费、税费和必要注册商费用的治理上限，不是市场报价。
+- 首年若包含注册、转让、经纪或 premium 费用，适用第 6 节的独立首年门禁。
+- 超出任一上限时停止，不议价、不付款，重新提交 Brand、Legal 和 Finance 审批。
+- `.ai` 预算显著高于 `.com`/`.org`/`.dev`，用于覆盖多年注册要求、汇率和可能的标准价变化；不代表接受任意 premium 报价。
 
-以下为记录类别和决策要求，不是待执行记录值：
+## 4. 域名评估矩阵
 
-| 类别 | 基线 |
-| --- | --- |
-| Apex/WWW | 根域指向经批准的托管入口；`www` 只重定向，不复制站点 |
-| Docs | 指向独立文档托管入口，设置自定义域验证并防止悬空记录 |
-| MX | 保持已验证的 Workspace 配置；任何修改先导出当前记录并确认邮件连续性 |
-| SPF | 仅列出已批准发信方，避免重复 SPF TXT，控制 DNS lookup 数量 |
-| DKIM | 每个发信系统独立 selector，私钥由对应服务持有，不进入仓库 |
-| DMARC | 先观察报告，再分阶段提高策略；报告邮箱和数据访问需受控 |
-| CAA | 仅授权实际使用的 CA；启用前确认托管平台证书签发需求 |
-| DNSSEC | 在注册商与权威 DNS 双方支持且回滚流程验证后启用 |
-| TXT 验证 | 记录用途、Owner 和到期日；验证完成后能删除的及时删除 |
+| 域名 | 用途 | 优先级 | 是否建议购买 | 目标用户 | 品牌价值 | 混淆风险 | 年度预算上限 | 当前状态 | 购买渠道 | 自动续费要求 | 跳转目标 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `zeno-ai.org` | 生产主域与品牌 canonical | P0 | 已持有；不重复购买 | 全部用户 | 高 | 高 | USD 50/年 | 已持有；生产主域；注册、DNS 与续费细节 TBD | 现有注册商：TBD | 必须；付款方式和到期告警需双重保障 | 主站 canonical，不作为跳转域 |
+| `zeno.ai` | 最短主品牌防御域和品牌入口 | P1 | 建议；仅在合法可得且首年总价不超过门禁时 | 全部用户、媒体、合作伙伴 | 高 | 高 | USD 300/年 | TBD（未查询可注册性；未购买） | 经批准的企业注册商：TBD；须支持 `.ai` | 必须；至少提前 60 天检查余额和续费价 | `https://zeno-ai.org/` |
+| `zeno-robotics.com` | 商业语境下的机器人品牌防御域 | P1 | 建议；价格和法务确认后 | 高校合作方、产业伙伴、国际用户 | 高 | 高 | USD 50/年 | TBD（未查询可注册性；未购买） | 经批准的企业注册商：TBD | 必须；至少提前 60 天告警 | `https://zeno-ai.org/` |
+| `zeno-robotics.org` | 开源与研究语境下的机器人品牌防御域 | P1 | 建议；价格和法务确认后 | 开源社区、高校、研究人员 | 高 | 高 | USD 40/年 | TBD（未查询可注册性；未购买） | 经批准的企业注册商：TBD | 必须；至少提前 60 天告警 | `https://zeno-ai.org/` |
+| `zeno.dev` | 开发者入口的短域名 | P2 | 建议；先确认 Developer Portal Owner 和 HTTPS 上线能力 | 开发者、贡献者、学生 | 高 | 中 | USD 40/年 | TBD（未查询可注册性；未购买） | 经批准且支持 `.dev` 的企业注册商：TBD | 活跃期间必须；至少提前 60 天告警 | `https://developer.zeno-ai.org/` |
+| `zeno-embodied.ai` | 具身智能定位页或研究入口 | P2 | 条件建议；仅在该英文定位获 Brand/Legal 批准后 | 具身智能研究者、国际合作方 | 中 | 中 | USD 250/年 | TBD（未查询可注册性；未购买） | 经批准且支持 `.ai` 的企业注册商：TBD | 持有期间必须；每年评审定位价值 | `https://zeno-ai.org/platform/` |
+| `zeno-platform.ai` | 全栈平台概览入口 | P2 | 条件建议；与 `zeno-embodied.ai` 二选一优先 | 平台开发者、合作伙伴、研究团队 | 中 | 中 | USD 250/年 | TBD（未查询可注册性；未购买） | 经批准且支持 `.ai` 的企业注册商：TBD | 持有期间必须；每年评审入口价值 | `https://zeno-ai.org/platform/` |
+| `zeno-humanoid.com` | Zeno Humanoid 商业与产品防御域 | P3 | 当前不建议；产品公开发布或出现混淆证据后再评估 | 人形机器人用户、合作伙伴 | 中 | 中 | USD 50/年 | TBD（未查询可注册性；未购买） | 经批准的企业注册商：TBD | 如持有则必须；退役前完成风险评估 | `https://zeno-ai.org/products/humanoid/` |
+| `zeno-humanoid.org` | Zeno Humanoid 开源社区防御域 | P3 | 当前不建议；社区独立入口获批后再评估 | 开源贡献者、高校团队 | 中 | 中 | USD 40/年 | TBD（未查询可注册性；未购买） | 经批准的企业注册商：TBD | 如持有则必须；退役前完成风险评估 | `https://zeno-ai.org/products/humanoid/` |
+| `zeno-marine.com` | Zeno Marine 产品与商业防御域 | P3 | 当前不建议；产品发布或真实混淆风险触发 | 海洋机器人用户、合作伙伴 | 中 | 中 | USD 50/年 | TBD（未查询可注册性；未购买） | 经批准的企业注册商：TBD | 如持有则必须；退役前完成风险评估 | `https://zeno-ai.org/products/marine/` |
 
-初次迁移或高风险切换前可临时降低相关记录 TTL；必须提前完成并等待旧 TTL 窗口。稳定后恢复合理 TTL，避免永久低 TTL。
+机器可读版本见 [`../infrastructure/domains/domain-register.csv`](../infrastructure/domains/domain-register.csv)。两份文件必须在同一 Pull Request 中同步修改。
 
-## 8. Web 安全与边界
+## 5. 购买建议结论
 
-- 全站 HTTPS；HTTP 永久重定向到 HTTPS，证书自动续期并在到期前告警。
-- HSTS 分阶段启用；确认所有子域支持 HTTPS 后再考虑 `includeSubDomains`，满足长期条件后再评估 preload。
-- 官网与文档站默认不设置共享父域 Cookie；认证 Cookie 应使用精确 Host、`Secure`、`HttpOnly` 和合适的 `SameSite`。
-- CORS 使用精确 origin allowlist，不使用带凭据的通配符。
-- 内容安全策略先 report-only 观察，再按站点分别收紧。
-- 预览域与生产域身份、数据、缓存和分析配置隔离。
-- 第三方脚本必须有 Owner、用途、数据说明和移除方式，默认不加载。
+### P0：立即保持保护
 
-## 9. 监控矩阵
+- `zeno-ai.org` 是唯一已知现有生产主域，保持 canonical。
+- 后续只读盘点应优先补全注册商、到期日、自动续费、MFA、恢复、注册锁和 DNS 托管信息。
+- 在盘点完成前不迁移注册商、不改变 nameserver、不改变 MX。
 
-| 对象 | 最低检查 | 建议频率 | 告警 Owner |
+### P1：提交优先保护审批，但本阶段不查询或购买
+
+建议按顺序评估：
+
+1. `zeno.ai`：品牌最短、记忆价值最高，同时 `.ai` 价格和 premium 不确定性最大。
+2. `zeno-robotics.com`：覆盖商业和通用互联网认知下的高混淆入口。
+3. `zeno-robotics.org`：覆盖开源、高校和研究语境下的高混淆入口。
+
+任一候选不可得、权属复杂或超预算时，记录结果并停止；不得为了“抢注”临时提高上限。
+
+### P2：按入口成熟度选择
+
+- `zeno.dev` 只有在 `developer.zeno-ai.org` 已有 Owner、HTTPS 和长期内容计划时购买。
+- `zeno-embodied.ai` 与 `zeno-platform.ai` 功能重叠，第一年最多批准其中一个，避免品牌分散和重复续费。
+- P2 域名只做受控跳转，不建立第二套 canonical 网站。
+
+### P3：默认不纳入第一年购买
+
+`zeno-humanoid.com`、`zeno-humanoid.org` 和 `zeno-marine.com` 只有在正式产品发布、独立活动入口或可证明的混淆/钓鱼风险出现时重新评估。产品页面优先使用 `zeno-ai.org/products/...`。
+
+## 6. 第一年建议预算
+
+预算均为治理上限，不是采购指令；实际支出必须逐域审批。
+
+| 预算层 | 包含范围 | 首年上限 | 建议 |
 | --- | --- | --- | --- |
-| 根域和 `www` | DNS、HTTPS、重定向、首页关键字 | 1–5 分钟 | Website/Reliability |
-| 文档站 | DNS、HTTPS、关键页面、搜索入口 | 5 分钟 | Documentation/Reliability |
-| Cloud 入口 | DNS、TLS、健康端点、登录页 | 按产品 SLO | Cloud/Reliability |
-| 状态页 | 独立探测和发布链路 | 5 分钟 | Reliability |
-| TLS 证书 | 链、主机名、剩余有效期 | 每日 | Infrastructure |
-| 域名注册 | 到期日、自动续费、注册锁、联系人 | 每月及到期前 | Domain Owner |
-| 邮件认证 | MX、SPF、DKIM、DMARC 报告趋势 | 每日/每周 | Workspace/Security |
+| 基础保护 | P0 + 三个 P1 | USD 1,800 | 第一年度建议批准的核心预算包 |
+| P2 条件储备 | `zeno.dev` + 两个 `.ai` P2 候选中的最多一个 | USD 600 | 仅在入口/定位决策完成后启用 |
+| P3 应急储备 | 三个 P3 中按真实风险触发 | USD 300 | 默认不支出 |
+| 建议年度授权上限 | 基础保护 + P2 条件储备 | USD 2,400 | 不含 P3；逐域仍需人工批准 |
+| 绝对风险上限 | 含 P3 应急储备 | USD 2,700 | 不应作为默认采购目标 |
 
-告警不得只发送到被监控的同一故障域。至少保留一个经批准的带外通知渠道，具体地址不写入公开仓库。
+首年单域获取门禁：
 
-## 10. 变更与退役流程
+| 域名类别 | 首年总价上限 | 处理方式 |
+| --- | --- | --- |
+| `zeno.ai` | USD 1,500 | 超出立即停止并重新评估，不自动进入经纪或竞价 |
+| 其他 `.ai` | 每个 USD 500 | 第一年度最多购买一个 P2 `.ai` 候选 |
+| `.com` | 每个 USD 150 | premium 或转让报价超出时停止 |
+| `.org` | 每个 USD 100 | premium 或转让报价超出时停止 |
+| `.dev` | USD 100 | 购买前先验证 HTTPS 和跳转上线计划 |
 
-### 新增或修改
+预算预留应覆盖税费、汇率和注册商费用，但不得包含未披露的自动增值服务。实际报价、币种、注册年限和续费价必须在批准单中单独列明。
 
-1. 在 `tasks/` 建立变更条目，说明业务理由、Owner、记录类型、TTL、依赖、验证与回滚。
-2. 检查命名冲突、Cookie/CORS、安全、证书、搜索索引和第三方域名验证影响。
-3. 导出并脱敏保存现状摘要；通过 Pull Request 双人评审。
-4. 在授权维护窗口实施，按 [`deployment-runbook.md`](deployment-runbook.md) 验证。
-5. 监控稳定后把矩阵状态更新为 `active`，并记录变更单引用。
+## 7. 三年持有策略
 
-### 退役
+### Year 1：保护主品牌并控制扩张
 
-1. 识别访问者、API 客户端、Cookie、OAuth 回调、证书和外部链接依赖。
-2. 公告迁移并设置可观测的永久重定向；API 不应仅依靠网页重定向。
-3. 删除托管绑定前处理 DNS，避免留下可被第三方接管的悬空 CNAME。
-4. 保留必要的防御性记录和监控窗口，确认流量降至预期。
-5. 更新矩阵为 `retired`，归档验证与回滚记录。
+- 保持 P0，不变更主站 canonical。
+- 在明确授权后依序评估 P1；只有可得、合规且不超门禁时才购买。
+- P2 先完成入口 Owner 和内容决策；两个 `.ai` 定位域最多选择一个。
+- P3 默认不购买。
+- 所有已持有域名启用 MFA、注册锁、自动续费、60/30/14/7 天到期告警和备用责任人。
 
-## 11. 首次发布建议顺序
+### Year 2：用证据决定 P2/P3
 
-1. 授权核验域名注册、权威 DNS、Workspace 邮件和现有记录，只读导出当前状态。
-2. 审批 `zeno-ai.org`、`www.zeno-ai.org` 和 `docs.zeno-ai.org` 的 Owner 与托管方案。
-3. 在临时托管 URL 完成官网和文档站构建、链接、安全头与可访问性验证。
-4. 配置监控和回滚目标，之后才安排 DNS 发布窗口。
-5. 稳定运行后再评估 `status`、`cloud`、`learn` 和 `assets` 子域，避免一次性扩大攻击面。
+- 无条件续持 P0/P1，前提是续费未出现异常 premium 变化；异常时提前升级审批，不能让域名到期。
+- 用重定向流量、搜索混淆、安全事件和产品路线评估 P2。
+- P2 连续没有明确入口价值时进入退役评估，但不得直接关闭自动续费。
+- 仅在真实钓鱼、混淆、产品发布或合作要求出现时增加 P3。
 
-## 12. 待确认清单
+### Year 3：稳定核心组合并治理退役
 
-- 注册商、权威 DNS 服务商、注册锁、自动续费与恢复联系人。
-- 当前 DNS zone、Google Workspace MX/SPF/DKIM/DMARC 与域名验证状态。
-- GitHub Organization 的正式公开 URL、所有者和域名验证状态。
-- 官网、文档站、Cloud 与状态页的托管平台、区域和数据处理边界。
-- 是否需要中国大陆访问优化、ICP备案或其他地区合规评估。
-- 正式支持、安全、隐私、法律和媒体联系地址。
+- P0/P1 继续作为长期核心组合持有。
+- 对 P2/P3 做第三年正式复审：Owner、用途、访问量、品牌保护价值、年度成本和退役风险。
+- 退役前至少检查商标、防接管、旧链接、证书、Cookie、OAuth 回调和邮件依赖。
+- 对确定保留的核心域可考虑多年度续费，但仍需保留年度 Owner 与付款检查。
+
+按本文上限计算：P0/P1 三年持有上限为 USD 2,680；若增加一个 P2 `.ai` 候选和 `zeno.dev`，三年组合上限为 USD 3,860。该数字是保守预算包，不是预测价格，也不包含未经批准的经纪、竞价或高价转让。
+
+## 8. 注册商与安全要求
+
+购买渠道暂定为 `TBD`。选择企业注册商时至少要求：
+
+- 支持目标 TLD、组织账号、强制 MFA、细粒度角色和审计记录；
+- 明示首次注册、转让、续费和 premium 续费价格；
+- 支持自动续费、到期告警、注册锁、转移锁和安全恢复；
+- WHOIS/RDAP 隐私及数据处理符合组织要求；
+- 可导出资产与账单摘要，但不把付款信息或恢复资料提交 Git；
+- DNS 托管与注册商锁定策略经过评审，避免单人可同时转移域名和修改 DNS。
+
+Cloudflare Registrar 的官方资料说明其采用 registry/ICANN 成本价并默认自动续费，也明确提示 premium 域名价格可能显著更高、搜索结果可能非权威或过时；这支持“实时复核价格而不假设可注册”的门禁，而不是指定必须使用 Cloudflare。
+
+## 9. 跳转与技术要求
+
+- 所有防御域只在确认控制权、证书和监控后启用 HTTPS 308 跳转。
+- 跳转必须保留合理路径或明确落到产品页面，不部署复制站点。
+- canonical、sitemap、分析归因和搜索控制始终指向 `zeno-ai.org`。
+- 不在防御域设置邮箱、登录 Cookie、OAuth 回调或独立 API，除非另有架构审批。
+- `.dev` 位于全 TLD HSTS preload 列表，浏览器连接必须使用 HTTPS；证书和跳转未就绪前不能启用入口。
+- 域名退役不得先删除托管再遗留悬空 DNS；应按运行手册进行依赖检查和防接管处理。
+
+## 10. `zeno-ai.org` 子域约定
+
+子域不需要购买，仍应以主域承载公共服务：
+
+| 子域 | 规划用途 | 状态 |
+| --- | --- | --- |
+| `www.zeno-ai.org` | 主站兼容入口，跳转根域 | `proposed` |
+| `docs.zeno-ai.org` | 产品文档 | `proposed` |
+| `developer.zeno-ai.org` | Developer Portal | `proposed` |
+| `api.zeno-ai.org` | 公共 API | `proposed` |
+| `cloud.zeno-ai.org` | Zeno Cloud | `proposed` |
+| `models.zeno-ai.org` | 模型与权重入口 | `proposed` |
+| `sim.zeno-ai.org` | Zeno Simulation | `proposed` |
+| `forum.zeno-ai.org` | 社区论坛 | `proposed` |
+| `status.zeno-ai.org` | 独立状态入口 | `proposed` |
+| `download.zeno-ai.org` | 受控下载入口 | `proposed` |
+| `security.zeno-ai.org` | 安全政策和报告入口 | `proposed` |
+
+`proposed` 不代表 DNS 记录存在。创建、修改或删除记录仍需单独批准。
+
+## 11. 维护流程
+
+1. 每季度复核 Owner、用途、状态、到期日、自动续费和预算。
+2. 每次购买、续费、转让或退役前同步更新 Markdown 和 CSV。
+3. 可注册性和报价只在明确批准的采购窗口由指定执行人查询，并记录时间戳；不得把支付信息写入仓库。
+4. 任何域名进入 `owned` 后，补全注册商、管理员角色、续费日、MFA、恢复和 DNS 托管信息。
+5. 任何域名改变优先级或预算时，在 `docs/decisions/` 记录理由并进行 Brand、Legal、Security 和 Finance 评审。
+
+## 12. 公开参考资料
+
+以下资料仅用于建立预算和安全门禁，均不证明候选域名可注册：
+
+- [IANA `.ai` delegation](https://www.iana.org/domains/root/db/ai.html)：`.ai` 是 Anguilla 的国家和地区顶级域。
+- [Namecheap domain pricing](https://www.namecheap.com/domains/)：公开价格页显示 `.ai` 有最低注册年限要求，且 `.ai`、`.dev`、`.com`、`.org` 的注册和续费价差异明显。
+- [Cloudflare Registrar](https://www.cloudflare.com/products/registrar/)：说明成本价、自动续费、DNSSEC 和注册保护能力。
+- [Cloudflare Registrar API](https://developers.cloudflare.com/api/resources/registrar/)：明确搜索可注册性可能非权威或过时，premium 价格可能显著高于标准价。
+- [Google Registry `.dev`](https://get.dev/)：说明 `.dev` 位于 HSTS preload 列表，必须使用 HTTPS。
+
+价格、支持范围和政策可能变化。执行采购前必须重新核验官方实时条款，但不得在没有购买授权时执行注册或付款。
