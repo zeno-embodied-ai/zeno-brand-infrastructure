@@ -1,0 +1,10 @@
+# Example only. Replace <GITHUB_ORGANIZATION> and team slugs after Organization
+# and Teams have been approved. Do not enable required CODEOWNERS review until
+# every referenced team exists and has the intended access.
+* @<GITHUB_ORGANIZATION>/github-admins
+
+/profile/ @<GITHUB_ORGANIZATION>/community-maintainers
+/ISSUE_TEMPLATE/ @<GITHUB_ORGANIZATION>/community-maintainers
+/SECURITY.md @<GITHUB_ORGANIZATION>/security-maintainers
+/CODEOWNERS @<GITHUB_ORGANIZATION>/github-admins @<GITHUB_ORGANIZATION>/security-maintainers
+/.github/workflows/ @<GITHUB_ORGANIZATION>/github-admins @<GITHUB_ORGANIZATION>/security-maintainers

@@ -29,10 +29,12 @@ required_files=(
   docs/domain-matrix.md
   docs/deployment-runbook.md
   docs/dns-plan.md
+  docs/github-plan.md
   docs/open-questions.md
   docs/decisions/0001-domain-portfolio-priorities.md
   docs/decisions/0002-website-v1-stack.md
   docs/decisions/0003-developer-documentation-stack.md
+  docs/decisions/0004-github-organization-governance.md
   infrastructure/domains/domain-register.csv
   infrastructure/cloudflare/dns-records.example.yaml
   infrastructure/cloudflare/redirect-rules.md
@@ -43,6 +45,19 @@ required_files=(
   tasks/02-website-v1.md
   tasks/03-developer-docs.md
   tasks/04-dns-migration-plan.md
+  tasks/05-github-organization-plan.md
+  .github/profile/README.md
+  .github/CONTRIBUTING.md
+  .github/CODE_OF_CONDUCT.md
+  .github/SECURITY.md
+  .github/SUPPORT.md
+  .github/ISSUE_TEMPLATE/config.yml
+  .github/ISSUE_TEMPLATE/bug_report.md
+  .github/ISSUE_TEMPLATE/feature_request.md
+  .github/ISSUE_TEMPLATE/documentation.md
+  .github/PULL_REQUEST_TEMPLATE.md
+  .github/dependabot.yml
+  .github/CODEOWNERS
   tasks/TEMPLATE.md
   website/README.md
   website/package.json
