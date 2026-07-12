@@ -1,0 +1,65 @@
+import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
+
+const sidebars: SidebarsConfig = {
+  tutorialSidebar: [
+    {
+      type: "category",
+      label: "Getting Started",
+      items: ["overview/introduction", "overview/architecture", "overview/quick-start", "overview/safety"],
+    },
+    {
+      type: "category",
+      label: "Hardware",
+      items: [
+        "hardware/zeno-core",
+        "hardware/zeno-link",
+        "hardware/power-system",
+        "hardware/jetson-orin-nano",
+        "hardware/stm32f767",
+        "hardware/camera-interfaces",
+        "hardware/can",
+        "hardware/rs-485",
+        "hardware/manufacturing",
+      ],
+    },
+    {
+      type: "category",
+      label: "Firmware",
+      items: [
+        "firmware/boot-sequence",
+        "firmware/power-management",
+        "firmware/drivers",
+        "firmware/motor-control",
+        "firmware/servo-control",
+      ],
+    },
+    {
+      type: "category",
+      label: "Software",
+      items: ["software/ros-2", "software/sdk", "software/apis", "software/brain", "software/cerebellum"],
+    },
+    {
+      type: "category",
+      label: "Simulation",
+      items: ["simulation/isaac-lab", "simulation/mujoco", "simulation/gazebo", "simulation/lerobot"],
+    },
+    {
+      type: "category",
+      label: "Platforms",
+      items: ["platforms/zeno-humanoid", "platforms/zeno-marine"],
+    },
+    {
+      type: "category",
+      label: "Community",
+      items: [
+        "community/contributing",
+        "community/code-of-conduct",
+        "community/governance",
+        "community/security",
+        "community/release-process",
+      ],
+    },
+  ],
+};
+
+export default sidebars;

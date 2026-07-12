@@ -31,10 +31,12 @@ required_files=(
   docs/open-questions.md
   docs/decisions/0001-domain-portfolio-priorities.md
   docs/decisions/0002-website-v1-stack.md
+  docs/decisions/0003-developer-documentation-stack.md
   infrastructure/domains/domain-register.csv
   tasks/00-inventory.md
   tasks/01-domain-matrix.md
   tasks/02-website-v1.md
+  tasks/03-developer-docs.md
   tasks/TEMPLATE.md
   website/README.md
   website/package.json
@@ -45,6 +47,15 @@ required_files=(
   website/src/app/robots.ts
   website/src/content/pages.ts
   website/scripts/check-static-output.mjs
+  documentation/README.md
+  documentation/package.json
+  documentation/package-lock.json
+  documentation/docusaurus.config.ts
+  documentation/sidebars.ts
+  documentation/versions.json
+  documentation/docs/overview/introduction.md
+  documentation/versioned_docs/version-0.1.0-draft/overview/introduction.md
+  documentation/scripts/validate-docs.mjs
 )
 
 failures=0

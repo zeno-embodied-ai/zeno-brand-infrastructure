@@ -1,0 +1,54 @@
+:root {
+  --ifm-color-primary: #1a8db8;
+  --ifm-color-primary-dark: #177fa6;
+  --ifm-color-primary-darker: #14718f;
+  --ifm-color-primary-darkest: #105b74;
+  --ifm-color-primary-light: #269ec8;
+  --ifm-color-primary-lighter: #42a9ce;
+  --ifm-color-primary-lightest: #78c5df;
+  --ifm-code-font-size: 92%;
+  --ifm-font-family-base: Arial, Helvetica, ui-sans-serif, system-ui, sans-serif;
+  --ifm-heading-font-family: Arial, Helvetica, ui-sans-serif, system-ui, sans-serif;
+  --ifm-heading-font-weight: 700;
+  --ifm-background-color: #f7fafc;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #aee953;
+  --ifm-color-primary-dark: #9ddd3d;
+  --ifm-color-primary-darker: #91d132;
+  --ifm-color-primary-darkest: #77ab29;
+  --ifm-color-primary-light: #bff06f;
+  --ifm-color-primary-lighter: #caf482;
+  --ifm-color-primary-lightest: #dcf8ad;
+  --ifm-background-color: #07111f;
+  --ifm-background-surface-color: #0d1d2d;
+  --ifm-navbar-background-color: #091726;
+  --ifm-footer-background-color: #050c16;
+}
+
+.hero--zeno {
+  background:
+    radial-gradient(circle at 80% 20%, rgb(56 189 248 / 22%), transparent 28rem),
+    radial-gradient(circle at 15% 70%, rgb(174 233 83 / 16%), transparent 26rem),
+    #07111f;
+  color: #f8fafc;
+  padding: 5rem 0;
+}
+
+.hero__title {
+  letter-spacing: -0.05em;
+}
+
+.hero__subtitle {
+  max-width: 48rem;
+  margin-inline: auto;
+  color: #cbd5e1;
+}
+
+.draft-note {
+  border: 1px solid rgb(234 179 8 / 45%);
+  border-radius: 0.65rem;
+  background: rgb(234 179 8 / 10%);
+  padding: 0.8rem 1rem;
+}
