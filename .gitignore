@@ -33,6 +33,7 @@ temp/
 
 # Node.js
 node_modules/
+*.tsbuildinfo
 .npm/
 .yarn/
 .pnpm-store/

@@ -30,10 +30,21 @@ required_files=(
   docs/deployment-runbook.md
   docs/open-questions.md
   docs/decisions/0001-domain-portfolio-priorities.md
+  docs/decisions/0002-website-v1-stack.md
   infrastructure/domains/domain-register.csv
   tasks/00-inventory.md
   tasks/01-domain-matrix.md
+  tasks/02-website-v1.md
   tasks/TEMPLATE.md
+  website/README.md
+  website/package.json
+  website/package-lock.json
+  website/next.config.ts
+  website/src/app/page.tsx
+  website/src/app/sitemap.ts
+  website/src/app/robots.ts
+  website/src/content/pages.ts
+  website/scripts/check-static-output.mjs
 )
 
 failures=0
