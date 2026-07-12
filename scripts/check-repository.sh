@@ -28,15 +28,21 @@ required_files=(
   docs/asset-register.md
   docs/domain-matrix.md
   docs/deployment-runbook.md
+  docs/dns-plan.md
   docs/open-questions.md
   docs/decisions/0001-domain-portfolio-priorities.md
   docs/decisions/0002-website-v1-stack.md
   docs/decisions/0003-developer-documentation-stack.md
   infrastructure/domains/domain-register.csv
+  infrastructure/cloudflare/dns-records.example.yaml
+  infrastructure/cloudflare/redirect-rules.md
+  infrastructure/cloudflare/verification-checklist.md
+  infrastructure/google-workspace/email-dns-checklist.md
   tasks/00-inventory.md
   tasks/01-domain-matrix.md
   tasks/02-website-v1.md
   tasks/03-developer-docs.md
+  tasks/04-dns-migration-plan.md
   tasks/TEMPLATE.md
   website/README.md
   website/package.json

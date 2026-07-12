@@ -1,0 +1,123 @@
+# Example only: this file is not an import file and must never be applied as-is.
+# All bracketed values are placeholders. Copy approved values only into a
+# controlled implementation artifact after read-only export and L3 approval.
+zone: zeno-ai.org
+status: proposed
+authoritative_dns_provider: <UNKNOWN_OR_APPROVED_PROVIDER>
+defaults:
+  ttl: <APPROVED_TTL_SECONDS>
+  unknown_records: preserve
+  production_apply: prohibited
+
+records:
+  - name: "@"
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_WEBSITE_ORIGIN>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: canonical public website
+  - name: www
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_WEBSITE_ORIGIN>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: redirect to canonical root domain
+  - name: docs
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_DOCS_ORIGIN>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: developer documentation
+  - name: github
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_REDIRECT_ORIGIN>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: approved GitHub organization redirect
+  - name: api
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_API_ORIGIN>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: public API
+  - name: cloud
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_CLOUD_ORIGIN>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: cloud console
+  - name: models
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_MODELS_ORIGIN>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: model catalogue or distribution frontend
+  - name: sim
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_SIM_ORIGIN>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: simulation service
+  - name: forum
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_FORUM_ORIGIN>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: community forum
+  - name: status
+    type: <APPROVED_STATUS_RECORD_TYPE>
+    value: <APPROVED_INDEPENDENT_STATUS_PROVIDER_TARGET>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: dns_only
+    purpose: independent public status page
+  - name: download
+    type: <APPROVED_DOWNLOAD_RECORD_TYPE>
+    value: <APPROVED_DOWNLOAD_PROVIDER_TARGET>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: dns_only
+    purpose: direct download or release distribution
+  - name: security
+    type: <APPROVED_WEB_RECORD_TYPE>
+    value: <APPROVED_SECURITY_ORIGIN_OR_REDIRECT>
+    ttl: <APPROVED_TTL_SECONDS>
+    proxy: proxied
+    purpose: security contact or disclosure page
+
+protected_records:
+  - name: "@"
+    type: MX
+    value: <EXPORTED_GOOGLE_WORKSPACE_MX_TARGET>
+    priority: <EXPORTED_PRIORITY>
+    ttl: <EXPORTED_TTL_SECONDS>
+    proxy: dns_only
+    action: preserve_exactly_until_workspace_owner_approves_change
+  - name: "@"
+    type: TXT
+    value: <EXPORTED_SPF_POLICY>
+    ttl: <EXPORTED_TTL_SECONDS>
+    proxy: dns_only
+    action: preserve_exactly_until_mail_flow_is_verified
+  - name: <EXPORTED_DKIM_SELECTOR>._domainkey
+    type: TXT
+    value: <EXPORTED_DKIM_PUBLIC_KEY>
+    ttl: <EXPORTED_TTL_SECONDS>
+    proxy: dns_only
+    action: preserve_exactly_until_dkim_alignment_is_verified
+  - name: _dmarc
+    type: TXT
+    value: <EXPORTED_DMARC_POLICY>
+    ttl: <EXPORTED_TTL_SECONDS>
+    proxy: dns_only
+    action: preserve_exactly_until_dmarc_reports_and_mail_flow_are_verified
+  - name: <EXPORTED_GOOGLE_VERIFICATION_NAME>
+    type: <TXT_OR_CNAME>
+    value: <EXPORTED_GOOGLE_VERIFICATION_VALUE>
+    ttl: <EXPORTED_TTL_SECONDS>
+    proxy: dns_only
+    action: preserve_exactly_until_workspace_owner_confirms_not_required
+  - name: <EXPORTED_OTHER_VERIFICATION_NAME>
+    type: <EXPORTED_RECORD_TYPE>
+    value: <EXPORTED_VALUE>
+    ttl: <EXPORTED_TTL_SECONDS>
+    proxy: dns_only
+    action: preserve_until_record_owner_approves_removal
