@@ -17,7 +17,7 @@ export type SitePage = {
   title: string;
   summary: string;
   description: string;
-  visualMode: "system" | "humanoid" | "marine";
+  visualMode: "platform" | "system" | "humanoid" | "marine";
   visualLabel: string;
   highlights: readonly string[];
   sections: readonly ContentSection[];
@@ -39,8 +39,8 @@ export const sitePages = [
       "Zeno organizes hardware, communication, runtime, control, intelligence, simulation and collaboration into one open platform model.",
     description:
       "Explore the Zeno platform architecture across hardware, software, intelligence, simulation and cloud collaboration.",
-    visualMode: "system",
-    visualLabel: "Abstract diagram placeholder for the Zeno platform stack",
+    visualMode: "platform",
+    visualLabel: "Zeno platform stack from research workflows to robot platforms, with optional cloud collaboration",
     highlights: ["Open architecture", "Composable layers", "Versioned interfaces"],
     sections: [
       {

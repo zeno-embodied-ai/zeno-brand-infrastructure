@@ -4,7 +4,7 @@ export const sitePagesZhCN = [
   {
     slug: "platform", eyebrow: "可组合的统一技术栈", title: "从连接、控制到认知的具身智能平台。",
     summary: "Zeno 将硬件、通信、运行时、实时控制、智能、仿真与协作组织为一套开放平台。",
-    description: "了解 Zeno 从硬件、软件到智能与仿真的完整平台架构。", visualMode: "system", visualLabel: "Zeno 平台技术栈示意图",
+    description: "了解 Zeno 从硬件、软件到智能与仿真的完整平台架构。", visualMode: "platform", visualLabel: "Zeno 平台技术栈：从教学、RoboCup 和研究工作流，经 Brain、Simulation、Cerebellum、Core 与 Link，连接 Humanoid 和 Marine；Cloud 提供可选的跨层协作能力",
     highlights: ["开放架构", "模块化分层", "版本化接口"],
     sections: [
       { eyebrow: "平台架构", title: "每一层都有明确职责", copy: "清晰的产品边界让团队能够理解完整系统，同时保持各模块可独立演进。", items: [

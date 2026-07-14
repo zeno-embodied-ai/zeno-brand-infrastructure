@@ -1,10 +1,29 @@
+import Image from "next/image";
+
 export function PlaceholderVisual({
   label,
   mode = "system",
 }: {
   label: string;
-  mode?: "system" | "humanoid" | "marine";
+  mode?: "platform" | "system" | "humanoid" | "marine";
 }) {
+  if (mode === "platform") {
+    return (
+      <figure className="surface-bright relative isolate overflow-hidden rounded-[2rem]">
+        <Image
+          src="/diagrams/zeno-platform-stack.png"
+          alt=""
+          width={1572}
+          height={1001}
+          priority
+          sizes="(min-width: 1024px) 42vw, (min-width: 640px) 80vw, 100vw"
+          className="h-auto w-full"
+        />
+        <figcaption className="sr-only">{label}</figcaption>
+      </figure>
+    );
+  }
+
   return (
     <figure
       className="technical-grid surface-bright relative isolate min-h-72 overflow-hidden rounded-[2rem] p-6 sm:min-h-96"

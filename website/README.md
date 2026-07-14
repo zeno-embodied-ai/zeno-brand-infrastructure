@@ -57,6 +57,12 @@ npm run check
 - Shared page content lives in `src/content/pages.ts` to keep navigation, metadata and sitemap generation consistent.
 - Technical specifications, compatibility and release claims belong in versioned product documentation, not marketing copy.
 
+The Platform hero uses `public/diagrams/zeno-platform-stack.png`. It follows the
+information architecture in `docs/brand-architecture.md`: Brain and Simulation
+lead into Cerebellum, Core and Link; Link branches to Humanoid and Marine; Cloud
+is shown as an optional cross-stack capability. The diagram does not assert a
+versioned technical compatibility guarantee.
+
 ## SEO and accessibility baseline
 
 - Per-page title, description, canonical URL and Open Graph/Twitter metadata
