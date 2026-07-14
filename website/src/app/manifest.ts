@@ -16,9 +16,9 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "en",
     icons: [
       {
-        src: "/icon.svg",
-        sizes: "64x64",
-        type: "image/svg+xml",
+        src: "/brand/zeno-logo.png",
+        sizes: "1254x1254",
+        type: "image/png",
       },
     ],
   };

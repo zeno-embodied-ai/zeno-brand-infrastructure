@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/lib/site";
+import { defaultLocale, isLocale } from "@/i18n/config";
 
 import "./globals.css";
 
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: "/icon.svg",
+    icon: "/brand/zeno-logo.png",
   },
 };
 
@@ -34,9 +36,12 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const requestHeaders = await headers();
+  const requestedLocale = requestHeaders.get("x-zeno-locale");
+  const locale = requestedLocale && isLocale(requestedLocale) ? requestedLocale : defaultLocale;
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body>
         <a
           href="#main-content"
@@ -44,7 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to content
         </a>
-        <SiteHeader />
+        <SiteHeader locale={locale} />
         {children}
         <SiteFooter />
       </body>

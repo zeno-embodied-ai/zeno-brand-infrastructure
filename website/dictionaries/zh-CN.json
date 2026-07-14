@@ -1,0 +1,9 @@
+{
+  "locale": "zh-CN",
+  "language": { "label": "语言", "chinese": "简体中文", "english": "English", "en": "English", "zh-CN": "简体中文" },
+  "accessibility": { "skipToContent": "跳至主要内容", "primaryNavigation": "主导航", "mobileNavigation": "移动端导航", "pageHighlights": "页面亮点" },
+  "navigation": { "home": "首页", "platform": "平台", "projects": "项目", "ecosystem": "生态", "documentation": "文档", "about": "关于我们", "hardware": "硬件", "software": "软件", "research": "研究", "education": "教育", "community": "社区", "roadmap": "路线图", "contact": "联系", "security": "安全", "menu": "菜单", "docs": "文档" },
+  "hero": { "title": "面向下一代机器人的开源具身智能平台", "description": "统一具身大脑与具身小脑，为教育、研究与产业应用提供完整的软硬件基础设施。", "primaryAction": "探索 Zeno", "secondaryAction": "访问 GitHub" },
+  "footer": { "description": "面向教育、科研和机器人竞赛的全栈开源具身智能平台。", "products": "产品", "explore": "探索", "project": "项目", "copyright": "© 2026 Zeno。开源项目基础设施。", "provenance": "基于仓库中已批准的内容构建，不使用第三方图片。" },
+  "metadata": { "siteDescription": "Zeno 是面向教育、科研和机器人竞赛的全栈开源具身智能平台。", "openGraphAlt": "Zeno — 开源具身智能" }
+}

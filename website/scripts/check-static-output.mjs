@@ -61,6 +61,7 @@ const requiredOutputFiles = [
   "sitemap.xml",
   "_headers",
   "icon.svg",
+  "brand/zeno-logo.png",
   "og/zeno-og-placeholder.svg",
 ];
 
@@ -116,7 +117,7 @@ for (const route of routes) {
   const hrefs = [...html.matchAll(/href="(\/[^"?#]*)(?:[?#][^"]*)?"/g)].map((match) => match[1]);
 
   for (const href of hrefs) {
-    if (href.startsWith("/_next/") || href.startsWith("/og/") || href === "/icon.svg") continue;
+    if (href.startsWith("/_next/") || href.startsWith("/og/") || href === "/icon.svg" || href === "/brand/zeno-logo.png") continue;
     if (href === "/manifest.webmanifest") continue;
 
     const target = href === "/" ? routeFile("") : join(output, href, "index.html");

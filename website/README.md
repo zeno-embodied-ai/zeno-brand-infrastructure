@@ -6,7 +6,7 @@ The first static-first website for `zeno-ai.org`, built with Next.js, TypeScript
 
 This is the Phase 2 local implementation. It has not been published and does not connect to production accounts, DNS, analytics, forms, databases or external APIs. Production deployment requires explicit human approval under the repository runbook.
 
-All public product and positioning copy is derived from the repository's approved planning content. The site uses an original geometric brand mark and replaceable CSS/SVG placeholders; it does not include third-party logos, photos or marketing assets.
+All public product and positioning copy is derived from the repository's approved planning content. The site uses the original Zeno geometric mark at `public/brand/zeno-logo.png`; it does not include third-party logos, photos or marketing assets.
 
 ## Technology
 
@@ -50,8 +50,8 @@ npm run check
 ## Content architecture
 
 - English is the active default language at the root URL.
-- `src/i18n/config.ts` reserves `zh-CN` as the future Simplified Chinese locale.
-- Chinese routes are not generated until translated content and URL policy are approved.
+- Simplified Chinese uses the explicit `/zh-CN/` route prefix; English remains at the root URL.
+- The fixed `zh-CN` segment avoids colliding with the root-level dynamic `[slug]` routes.
 - Shared page content lives in `src/content/pages.ts` to keep navigation, metadata and sitemap generation consistent.
 - Technical specifications, compatibility and release claims belong in versioned product documentation, not marketing copy.
 
@@ -92,4 +92,4 @@ Creating a Vercel project or publishing a production deployment is a protected o
 - Documentation portal URL activation: planned; `docs.zeno-ai.org` is not asserted active
 - Community channels: TBD
 - Support, media, legal and security reporting addresses: TBD
-- Final logo, type system, product imagery and Open Graph art: pending brand approval
+- Type system, product imagery and Open Graph art: pending brand approval

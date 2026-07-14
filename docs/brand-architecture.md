@@ -126,7 +126,7 @@ across the stack; local and open-source workflows should remain explicit.
 
 ## 7. 视觉与语言治理
 
-当前仓库尚未包含已批准的 Logo、色彩、字体、图标和语调规范。相关资产进入仓库前需确认来源、授权、文件格式、可访问性与派生关系。
+仓库包含初始 Zeno Logo 资产 `website/public/brand/zeno-logo.png`，其使用范围和设计依据见 ADR 0005。色彩、字体、产品图标和语调规范仍待 Brand/Legal 形成正式规范。任何后续资产进入仓库前仍需确认来源、授权、文件格式、可访问性与派生关系。
 
 最低数字体验标准：
 

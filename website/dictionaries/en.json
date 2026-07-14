@@ -1,0 +1,9 @@
+{
+  "locale": "en",
+  "language": { "label": "Language", "chinese": "简体中文", "english": "English", "en": "English", "zh-CN": "Simplified Chinese" },
+  "accessibility": { "skipToContent": "Skip to content", "primaryNavigation": "Primary navigation", "mobileNavigation": "Mobile navigation", "pageHighlights": "Page highlights" },
+  "navigation": { "home": "Home", "platform": "Platform", "projects": "Projects", "ecosystem": "Ecosystem", "documentation": "Documentation", "about": "About", "hardware": "Hardware", "software": "Software", "research": "Research", "education": "Education", "community": "Community", "roadmap": "Roadmap", "contact": "Contact", "security": "Security", "menu": "Menu", "docs": "Docs" },
+  "hero": { "title": "An Open-Source Embodied Intelligence Platform for Next-Generation Robotics", "description": "A unified hardware and software foundation that brings together the embodied brain and embodied cerebellum for education, research, and real-world deployment.", "primaryAction": "Explore Zeno", "secondaryAction": "View on GitHub" },
+  "footer": { "description": "A full-stack open-source embodied intelligence platform for education, research and robotics competition.", "products": "Products", "explore": "Explore", "project": "Project", "copyright": "© 2026 Zeno. Open-source project infrastructure.", "provenance": "Built from repository-approved content. No third-party imagery." },
+  "metadata": { "siteDescription": "Zeno is a full-stack open-source embodied intelligence platform for education, research and robotics competition.", "openGraphAlt": "Zeno — open embodied intelligence" }
+}
