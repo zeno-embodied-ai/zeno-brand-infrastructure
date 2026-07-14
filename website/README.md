@@ -52,6 +52,8 @@ npm run check
 - English is the active default language at the root URL.
 - Simplified Chinese uses the explicit `/zh-CN/` route prefix; English remains at the root URL.
 - The fixed `zh-CN` segment avoids colliding with the root-level dynamic `[slug]` routes.
+- Shared navigation, homepage content, footer content and all public detail pages have dedicated Simplified Chinese copy.
+- Language switching preserves the current page path while adding or removing the `/zh-CN` prefix.
 - Shared page content lives in `src/content/pages.ts` to keep navigation, metadata and sitemap generation consistent.
 - Technical specifications, compatibility and release claims belong in versioned product documentation, not marketing copy.
 

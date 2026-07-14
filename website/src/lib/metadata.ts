@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { siteConfig } from "@/lib/site";
 import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
 export function createMetadata({
   title,
@@ -16,6 +17,7 @@ export function createMetadata({
 }): Metadata {
   const canonicalPath = path === "/" ? "/" : `${path.replace(/\/$/, "")}/`;
   const canonical = new URL(canonicalPath, siteConfig.url).toString();
+  const dictionary = getDictionary(locale);
   const unprefixedPath = canonicalPath === "/zh-CN/"
     ? "/"
     : canonicalPath.startsWith("/zh-CN/")
@@ -45,7 +47,7 @@ export function createMetadata({
           url: "/og/zeno-og-placeholder.svg",
           width: 1200,
           height: 630,
-          alt: "Zeno — open embodied intelligence",
+          alt: dictionary.metadata.openGraphAlt,
         },
       ],
     },

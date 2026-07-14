@@ -1,8 +1,11 @@
 import { CtaLink } from "@/components/cta-link";
 import { PlaceholderVisual } from "@/components/placeholder-visual";
 import type { SitePage } from "@/content/pages";
+import { localizedPath, type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
-export function DetailPage({ page }: { page: SitePage }) {
+export function DetailPage({ page, locale = "en" }: { page: SitePage; locale?: Locale }) {
+  const dictionary = getDictionary(locale);
   return (
     <main id="main-content">
       <section className="relative overflow-hidden border-b border-white/10">
@@ -16,7 +19,7 @@ export function DetailPage({ page }: { page: SitePage }) {
             <p className="text-pretty mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
               {page.summary}
             </p>
-            <ul className="mt-8 flex flex-wrap gap-2" aria-label="Page highlights">
+            <ul className="mt-8 flex flex-wrap gap-2" aria-label={dictionary.accessibility.pageHighlights}>
               {page.highlights.map((highlight) => (
                 <li
                   key={highlight}
@@ -74,9 +77,9 @@ export function DetailPage({ page }: { page: SitePage }) {
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-400">{page.cta.copy}</p>
           </div>
           <div className="relative mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0 lg:shrink-0">
-            <CtaLink href={page.cta.primary.href}>{page.cta.primary.label}</CtaLink>
+            <CtaLink href={localizedPath(locale, page.cta.primary.href)}>{page.cta.primary.label}</CtaLink>
             {page.cta.secondary && (
-              <CtaLink href={page.cta.secondary.href} variant="secondary">
+              <CtaLink href={localizedPath(locale, page.cta.secondary.href)} variant="secondary">
                 {page.cta.secondary.label}
               </CtaLink>
             )}

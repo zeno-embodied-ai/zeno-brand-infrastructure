@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/lib/site";
 import { defaultLocale, isLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
 import "./globals.css";
 
@@ -40,6 +41,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const requestHeaders = await headers();
   const requestedLocale = requestHeaders.get("x-zeno-locale");
   const locale = requestedLocale && isLocale(requestedLocale) ? requestedLocale : defaultLocale;
+  const dictionary = getDictionary(locale);
   return (
     <html lang={locale}>
       <body>
@@ -47,11 +49,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           href="#main-content"
           className="fixed top-3 left-3 z-[100] -translate-y-24 rounded-full bg-lime-300 px-4 py-2 text-sm font-semibold text-slate-950 transition focus:translate-y-0"
         >
-          Skip to content
+          {dictionary.accessibility.skipToContent}
         </a>
         <SiteHeader locale={locale} />
         {children}
-        <SiteFooter />
+        <SiteFooter locale={locale} />
       </body>
     </html>
   );

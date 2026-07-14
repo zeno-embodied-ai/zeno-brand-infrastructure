@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { DetailPage } from "@/components/detail-page";
-import { getSitePage, sitePages } from "@/content/pages";
+import { sitePages } from "@/content/pages";
+import { getSitePageZhCN } from "@/content/pages.zh-CN";
 import { createMetadata } from "@/lib/metadata";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -15,7 +16,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const page = getSitePage(slug);
+  const page = getSitePageZhCN(slug);
   if (!page) return {};
 
   return createMetadata({
@@ -28,8 +29,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function LocalizedPage({ params }: PageProps) {
   const { slug } = await params;
-  const page = getSitePage(slug);
+  const page = getSitePageZhCN(slug);
   if (!page) notFound();
 
-  return <DetailPage page={page} />;
+  return <DetailPage page={page} locale="zh-CN" />;
 }

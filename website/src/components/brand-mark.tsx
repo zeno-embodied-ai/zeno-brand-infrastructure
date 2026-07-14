@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function BrandMark({ compact = false }: { compact?: boolean }) {
+import { localizedPath, type Locale } from "@/i18n/config";
+
+export function BrandMark({ compact = false, locale = "en" }: { compact?: boolean; locale?: Locale }) {
   return (
     <Link
-      href="/"
+      href={localizedPath(locale)}
       className="group inline-flex items-center gap-3 rounded-sm text-white"
-      aria-label="Zeno home"
+      aria-label={locale === "zh-CN" ? "Zeno 首页" : "Zeno home"}
     >
       <Image
         src="/brand/zeno-logo.png"

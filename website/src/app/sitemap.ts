@@ -21,5 +21,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: page.slug === "platform" || page.slug === "documentation" ? 0.9 : 0.7,
     })),
+    {
+      url: `${siteConfig.url}/zh-CN/`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    ...sitePages.map((page) => ({
+      url: `${siteConfig.url}/zh-CN/${page.slug}/`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: page.slug === "platform" || page.slug === "documentation" ? 0.8 : 0.6,
+    })),
   ];
 }

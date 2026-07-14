@@ -3,10 +3,12 @@
 import { usePathname, useSearchParams } from "next/navigation";
 
 import { localeCookieName, locales, localizedPath, type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
 export function LanguageSwitcher({ locale, className = "" }: { locale: Locale; className?: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const dictionary = getDictionary(locale);
 
   function changeLanguage(nextLocale: Locale) {
     document.cookie = `${localeCookieName}=${nextLocale}; Path=/; Max-Age=31536000; SameSite=Lax`;
@@ -22,7 +24,7 @@ export function LanguageSwitcher({ locale, className = "" }: { locale: Locale; c
 
   return (
     <label className={`text-sm text-slate-300 ${className}`}>
-      <span className="sr-only">Language</span>
+      <span className="sr-only">{dictionary.language.label}</span>
       <select
         value={locale}
         onChange={(event) => changeLanguage(event.target.value as Locale)}
