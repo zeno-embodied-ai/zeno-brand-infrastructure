@@ -27,8 +27,8 @@
 - [x] 创建 Organization profile、贡献、行为准则、安全、支持、Issue/PR、Dependabot 和 CODEOWNERS 模板。
 - [x] 将所有未知 Organization/Team/联系渠道保留为占位符。
 - [x] 记录 ADR、更新 README 和仓库自检。
-- [ ] 获得批准后只读确认 Organization 名称、Owners、Teams、功能和现有仓库。
-- [ ] 获得单独批准后创建/配置远程 Organization 和仓库。
+- [x] 获得批准后只读确认目标 Organization、当前成员资格和现有仓库。
+- [x] 获得单独批准后创建 14 个明确批准的 private 远程仓库；未配置 Owners、Teams、权限、账单或生产设置。
 
 ## 验证与结果
 
